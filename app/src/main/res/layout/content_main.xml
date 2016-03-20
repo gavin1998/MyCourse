@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main"
+    tools:context="com.example.cfy.mycourse.MainActivity">
+
+    <!--上部的表头，显示周一...周五,各部分的宽度通过layout_weight控制 -->
+    <LinearLayout
+        android:id="@+id/lineView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#DCDCDC"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="  "
+            android:background="#DCDCDC"
+            android:layout_alignParentTop="true"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.18"
+            android:text="星期一"
+            android:background="#DCDCDC"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.18"
+            android:text="星期二"
+            android:background="#DCDCDC"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.18"
+            android:text="星期三"
+            android:background="#DCDCDC"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.18"
+            android:text="星期四"
+            android:background="#DCDCDC"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.18"
+            android:text="星期五"
+            android:background="#DCDCDC"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            />
+    </LinearLayout>
+
+    <!--左侧为序号，右侧为课程表，宽度通过layout_weight定义分割
+    同时设置layout_width="0dp"-->
+    <LinearLayout
+        android:id="@+id/lineView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#DCDCDC"
+        android:layout_below="@+id/lineView1">
+
+        <!--定义宽度1dp的文本视图，实际显示为最左侧的竖线 -->
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:background="#DCDCDC"
+            android:layout_alignParentTop="true"
+            />
+
+        <!--左侧的课程序号定义为1列的grid：内容在程序中填充为1,2,3，... -->
+        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/side_GridView"
+            android:horizontalSpacing="1dp"
+            android:verticalSpacing="1dp"
+            android:stretchMode="columnWidth"
+            android:numColumns="1"
+            android:gravity="center"
+            android:listSelector="@null"
+            android:background="#DCDCDC"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.1">
+        </GridView>
+
+        <!--定义宽度1dp的文本视图，实际显示为灰色竖线 -->
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:background="#DCDCDC"
+            android:layout_alignParentTop="true"
+            />
+
+
+        <!--课程表通过GRID定义，列数为5
+        网格线是通过设置GridView各子项的间隔，horizontalSpacing="1dp"，verticalSpacing="1dp"
+        并分别设置GridView背景色与子项背景色实现的。
+        每个格子对应的内容又引用schedule_item中的内容
+         -->
+        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/main_GridView"
+            android:horizontalSpacing="1dp"
+            android:verticalSpacing="1dp"
+            android:stretchMode="columnWidth"
+            android:numColumns="5"
+            android:gravity="center"
+            android:listSelector="@null"
+            android:background="#DCDCDC"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.9"
+            tools:griditem="@layout/schedule_item">
+        </GridView>
+    </LinearLayout>
+
+    <!--下面的记事本 -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="在这里做一些记录"
+        android:gravity="center"
+        android:id="@+id/noteView"
+        android:layout_below="@+id/lineView2"
+        android:background="#DCDCDC"
+        />
+
+</RelativeLayout>

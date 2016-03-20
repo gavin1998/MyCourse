@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="100px">
+
+    <!--这里文本的backgroud为白色，grid中为灰色，文本之间没有被盖住的grid部分显示为
+    灰色的网格线-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#FFFFFF"
+        android:text="语文"
+        android:id="@+id/row_text"
+        android:textSize="20dp"
+        android:textColor="?attr/editTextColor"/>
+
+</LinearLayout>
